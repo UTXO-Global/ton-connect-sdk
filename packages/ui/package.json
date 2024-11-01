@@ -1,6 +1,6 @@
 {
     "name": "@utxo-global/tonconnect-ui",
-    "version": "2.0.10",
+    "version": "2.1.0",
     "scripts": {
         "start": "vite --host",
         "dev": "vite",
@@ -13,9 +13,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ton-connect/sdk.git"
+        "url": "git+https://github.com/UTXO-Global/ton-connect-sdk.git"
     },
-    "homepage": "https://github.com/ton-connect/sdk/tree/main/packages/ui",
+    "homepage": "https://github.com/UTXO-Global/ton-connect-sdk/tree/main/packages/ui",
     "bugs": {
         "url": "https://github.com/ton-connect/sdk/issues"
     },

@@ -23,13 +23,7 @@ You can find more details and the protocol specification in the
 Add the script to your HTML file:
 
 ```html
-<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-```
-
-ℹ️ If you don't want auto-update the library, pass concrete version instead of `latest`, e.g.
-
-```html
-<script src="https://unpkg.com/@tonconnect/ui@0.0.9/dist/tonconnect-ui.min.js"></script>
+<script src="https://utxo.global/@tonconnect/ui/2.1.0/tonconnect-ui.min.js"></script>
 ```
 
 You can find `TonConnectUI` in global variable `TON_CONNECT_UI`, e.g.
@@ -45,14 +39,14 @@ You can find `TonConnectUI` in global variable `TON_CONNECT_UI`, e.g.
 
 ## Installation with npm
 
-`npm i @tonconnect/ui`
+`npm i @utxo-global/tonconnect-ui`
 
 # Usage
 
 ## Create TonConnectUI instance
 
 ```ts
-import TonConnectUI from '@tonconnect/ui';
+import TonConnectUI from '@utxo-global/tonconnect-ui';
 
 const tonConnectUI = new TonConnectUI({
     manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',

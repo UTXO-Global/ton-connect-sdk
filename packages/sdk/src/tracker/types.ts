@@ -1,5 +1,16 @@
-import { CONNECT_EVENT_ERROR_CODES, ConnectItem, SEND_TRANSACTION_ERROR_CODES } from '@tonconnect/protocol';
-import { SendTransactionRequest, SendTransactionResponse, Wallet } from 'src/models';
+import {
+    CONNECT_EVENT_ERROR_CODES,
+    ConnectItem,
+    SEND_TRANSACTION_ERROR_CODES,
+    SIGN_DATA_ERROR_CODES
+} from '@tonconnect/protocol';
+import {
+    SendTransactionRequest,
+    SendTransactionResponse,
+    SignDataRequest,
+    SignDataResponse,
+    Wallet
+} from 'src/models';
 
 /**
  * Request TON Connect UI version.
@@ -390,6 +401,23 @@ function createTransactionInfo(
 }
 
 /**
+ * Sign data information.
+ */
+export type SignDataInfo = {
+    address: string;
+    message: string;
+    publicKey: string | null;
+};
+
+function createSignDataInfo(wallet: Wallet | null, signData: SignDataRequest): SignDataInfo {
+    return {
+        address: signData.address,
+        message: signData.message,
+        publicKey: wallet?.account?.publicKey ?? null
+    };
+}
+
+/**
  * Initial transaction event when a user initiates a transaction.
  */
 export type TransactionSentForSignatureEvent = {
@@ -548,6 +576,116 @@ export function createDisconnectionEvent(
     };
 }
 
+export type DataSentForSignatureEvent = {
+    type: 'data-sent-for-signature';
+} & ConnectionInfo &
+    SignDataInfo;
+
+export function createDataSentForSignatureEvent(
+    version: Version,
+    wallet: Wallet | null,
+    data: SignDataRequest
+): DataSentForSignatureEvent {
+    return {
+        type: 'data-sent-for-signature',
+        ...createConnectionInfo(version, wallet),
+        ...createSignDataInfo(wallet, data)
+    };
+}
+
+export type DataSignedEvent = {
+    /**
+     * Event type.
+     */
+    type: 'data-signed';
+    /**
+     * Connection success flag.
+     */
+    is_success: true;
+    /**
+     * Signed transaction.
+     */
+    signature: string;
+    /**
+     * Signed timestamp
+     */
+    timestamp: string;
+} & ConnectionInfo &
+    SignDataInfo;
+
+/**
+ * Create a transaction signed event.
+ * @param version
+ * @param wallet
+ * @param transaction
+ * @param signedData
+ */
+export function createDataSignedEvent(
+    version: Version,
+    wallet: Wallet | null,
+    signDataRequest: SignDataRequest,
+    signedData: SignDataResponse
+): DataSignedEvent {
+    return {
+        type: 'data-signed',
+        is_success: true,
+        signature: signedData.signature,
+        timestamp: signedData.timestamp,
+        ...createConnectionInfo(version, wallet),
+        ...createSignDataInfo(wallet, signDataRequest)
+    };
+}
+
+/**
+ * data signed error event when a user cancels a data or there is an error during the data process.
+ */
+export type DataSigningFailedEvent = {
+    /**
+     * Event type.
+     */
+    type: 'data-signing-failed';
+    /**
+     * Connection success flag.
+     */
+    is_success: false;
+    /**
+     * Reason for the error.
+     */
+    error_message: string;
+    /**
+     * Error code.
+     */
+    error_code: SIGN_DATA_ERROR_CODES | null;
+} & ConnectionInfo &
+    SignDataInfo;
+
+/**
+ * Create a data error event.
+ * @param version
+ * @param wallet
+ * @param signDataRequest
+ * @param errorMessage
+ * @param errorCode
+ */
+export function createDataSigningFailedEvent(
+    version: Version,
+    wallet: Wallet | null,
+    signDataRequest: SignDataRequest,
+    errorMessage: string,
+    errorCode: SIGN_DATA_ERROR_CODES | void
+): DataSigningFailedEvent {
+    return {
+        type: 'data-signing-failed',
+        is_success: false,
+        error_message: errorMessage,
+        error_code: errorCode ?? null,
+        ...createConnectionInfo(version, wallet),
+        ...createSignDataInfo(wallet, signDataRequest)
+    };
+}
+
+export type DataSigningEvent = DataSentForSignatureEvent | DataSignedEvent | DataSigningFailedEvent;
+
 /**
  * User action events.
  */
@@ -556,7 +694,8 @@ export type SdkActionEvent =
     | ConnectionEvent
     | ConnectionRestoringEvent
     | DisconnectionEvent
-    | TransactionSigningEvent;
+    | TransactionSigningEvent
+    | DataSigningEvent;
 
 /**
  * Parameters without version field.

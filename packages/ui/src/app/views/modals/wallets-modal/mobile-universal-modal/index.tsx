@@ -1,4 +1,8 @@
-import { ConnectAdditionalRequest, isWalletInfoRemote, WalletInfo } from '@tonconnect/sdk';
+import {
+    ConnectAdditionalRequest,
+    isWalletInfoRemote,
+    WalletInfo
+} from '@utxo-global/tonconnect-sdk';
 import { Component, createMemo, createSignal, For, Show } from 'solid-js';
 import {
     AtWalletIcon,

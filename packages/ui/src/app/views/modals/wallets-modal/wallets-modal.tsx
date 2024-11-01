@@ -4,7 +4,7 @@ import {
     Wallet,
     WalletInfo,
     WalletInfoRemote
-} from '@tonconnect/sdk';
+} from '@utxo-global/tonconnect-sdk';
 import {
     Component,
     createEffect,

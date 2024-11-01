@@ -1,7 +1,7 @@
 import { Component } from 'solid-js';
 import { H1Styled, H2Styled, QrCodeWrapper } from './style';
 import { QRCode } from 'src/app/components';
-import { WalletInfo } from '@tonconnect/sdk';
+import { WalletInfo } from '@utxo-global/tonconnect-sdk';
 
 import { addReturnStrategy } from 'src/app/utils/url-strategy-helpers';
 

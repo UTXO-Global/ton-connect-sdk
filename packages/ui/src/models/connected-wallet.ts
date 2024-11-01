@@ -1,4 +1,4 @@
-import { Wallet, WalletInfoInjectable, WalletInfoRemote } from '@tonconnect/sdk';
+import { Wallet, WalletInfoInjectable, WalletInfoRemote } from '@utxo-global/tonconnect-sdk';
 
 export type WalletOpenMethod = 'qrcode' | 'universal-link' | 'custom-deeplink';
 

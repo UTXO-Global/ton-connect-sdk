@@ -1,4 +1,4 @@
-import { WalletInfo } from '@tonconnect/sdk';
+import { WalletInfo } from '@utxo-global/tonconnect-sdk';
 
 export type PersonalizedWalletInfo = WalletInfo & {
     isPreferred?: boolean;

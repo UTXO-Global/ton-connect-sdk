@@ -4,7 +4,7 @@ import {
     isWalletInfoCurrentlyInjected,
     WalletInfoInjectable,
     WalletInfoRemote
-} from '@tonconnect/sdk';
+} from '@utxo-global/tonconnect-sdk';
 import {
     Component,
     createEffect,

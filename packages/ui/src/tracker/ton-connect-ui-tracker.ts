@@ -23,7 +23,7 @@ import {
     ResponseVersionEvent,
     Version,
     WithoutVersion
-} from '@tonconnect/sdk';
+} from '@utxo-global/tonconnect-sdk';
 
 export type TonConnectUITrackerOptions = {
     /**

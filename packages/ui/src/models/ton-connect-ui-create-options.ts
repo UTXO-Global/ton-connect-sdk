@@ -1,4 +1,4 @@
-import { EventDispatcher, ITonConnect, SdkActionEvent } from '@tonconnect/sdk';
+import { EventDispatcher, ITonConnect, SdkActionEvent } from '@utxo-global/tonconnect-sdk';
 import { TonConnectUiOptions } from 'src/models/ton-connect-ui-options';
 import { UserActionEvent } from 'src/tracker/types';
 
@@ -16,7 +16,7 @@ export interface TonConnectUiOptionsWithManifest extends TonConnectUiCreateOptio
 
 export interface TonConnectUiOptionsWithConnector extends TonConnectUiCreateOptionsBase {
     /**
-     * TonConnect instance. Can be helpful if you use custom ITonConnect implementation, or use both of @tonconnect/sdk and @tonconnect/ui in your app.
+     * TonConnect instance. Can be helpful if you use custom ITonConnect implementation, or use both of @utxo-global/tonconnect-sdk and @tonconnect/ui in your app.
      */
     connector?: ITonConnect;
 }

@@ -51,10 +51,10 @@ export default defineConfig({
             }
         },
         rollupOptions: {
-            external: ['classnames', 'deepmerge', '@tonconnect/sdk', 'ua-parser-js'],
+            external: ['classnames', 'deepmerge', '@utxo-global/tonconnect-sdk', 'ua-parser-js'],
             output: {
                 globals: {
-                    '@tonconnect/sdk': 'TonConnectSDK',
+                    '@utxo-global/tonconnect-sdk': 'TonConnectSDK',
                     deepmerge: 'deepmerge',
                     classnames: 'classNames',
                     'ua-parser-js': 'UAParser'

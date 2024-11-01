@@ -1,6 +1,6 @@
 {
     "name": "@utxo-global/tonconnect-ui",
-    "version": "2.0.9",
+    "version": "2.0.10",
     "scripts": {
         "start": "vite --host",
         "dev": "vite",
@@ -47,7 +47,7 @@
         }
     },
     "dependencies": {
-        "@tonconnect/sdk": "3.0.5",
+        "@utxo-global/tonconnect-sdk": "3.1.0",
         "classnames": "^2.3.2",
         "deepmerge": "^4.2.2",
         "ua-parser-js": "^1.0.35"

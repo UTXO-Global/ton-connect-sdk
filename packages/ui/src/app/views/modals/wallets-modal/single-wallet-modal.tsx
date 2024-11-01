@@ -1,4 +1,4 @@
-import { ConnectAdditionalRequest } from '@tonconnect/sdk';
+import { ConnectAdditionalRequest } from '@utxo-global/tonconnect-sdk';
 import {
     Component,
     createEffect,

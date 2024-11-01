@@ -1,4 +1,8 @@
-import { ConnectAdditionalRequest, isTelegramUrl, WalletInfoRemote } from '@tonconnect/sdk';
+import {
+    ConnectAdditionalRequest,
+    isTelegramUrl,
+    WalletInfoRemote
+} from '@utxo-global/tonconnect-sdk';
 import { Component, createMemo, createSignal, onCleanup, Show, useContext } from 'solid-js';
 import {
     BodyStyled,

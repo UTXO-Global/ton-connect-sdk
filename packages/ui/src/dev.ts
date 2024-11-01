@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { TonConnectUI } from 'src/ton-connect-ui';
 import { THEME } from 'src/models';
-import { SendTransactionRequest, TonConnect } from '@tonconnect/sdk';
+import { SendTransactionRequest, TonConnect } from '@utxo-global/tonconnect-sdk';
 
 async function dev(): Promise<void> {
     const connector = new TonConnect({
@@ -20,7 +20,7 @@ async function dev(): Promise<void> {
             borderRadius: 'm'
         },
         language: 'ru',
-        restoreConnection: true,
+        restoreConnection: true
         /*walletsListConfiguration: {
             includeWallets: [
                 {
